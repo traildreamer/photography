@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotograf [Ditt Namn] | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
+    <style>
+        .gallery-item img { transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 font-sans">
+
+    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden bg-zinc-900">
+        <img src="din-huvudbild.jpg" class="absolute w-full h-full object-cover opacity-60" alt="Portfolio Bakgrund">
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-light tracking-tighter text-white mb-4">DITT NAMN</h1>
+            <p class="text-lg md:text-xl text-zinc-200 font-light mb-8 uppercase tracking-[0.2em]">Konstnärlig fotografi & Porträtt</p>
+            <a href="#contact" class="bg-white text-zinc-900 px-8 py-3 rounded-full hover:bg-zinc-200 transition font-medium">Boka en session</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-[3/4]">
+                <a href="bild1-stor.jpg" class="glightbox">
+                    <img src="bild1.jpg" alt="Beskrivning av foto" class="w-full h-full object-cover cursor-pointer">
+                </a>
+            </div>
+
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
+                <a href="bild2-stor.jpg" class="glightbox">
+                    <img src="bild2.jpg" alt="Beskrivning av foto" class="w-full h-full object-cover cursor-pointer">
+                </a>
+            </div>
+
+            </div>
+    </main>
+
+    <section id="contact" class="bg-zinc-900 text-white py-24 px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-light mb-6">Låt oss skapa något tillsammans</h2>
+        <p class="text-zinc-400 max-w-xl mx-auto mb-10">
+            Tillgänglig för kommersiella uppdrag och privata sessioner i hela Sverige. 
+            Prata med mig om ditt projekt.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-6">
+            <a href="mailto:din@epost.se" class="text-2xl border-b border-zinc-700 pb-2 hover:border-white transition">din@epost.se</a>
+            <span class="hidden md:block text-zinc-700">/</span>
+            <a href="https://instagram.com/dittkonto" class="text-2xl border-b border-zinc-700 pb-2 hover:border-white transition">@instagram</a>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-xs text-zinc-400 uppercase tracking-widest">
+        &copy; 2024 [Ditt Namn] Photography. Built on Cloudflare.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({ selector: '.glightbox' });
+    </script>
+</body>
+</html>
