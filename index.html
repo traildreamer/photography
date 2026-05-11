@@ -13,11 +13,11 @@
         
         /* Galleri-inställningar */
         .img-wrapper { 
-            background-color: #f9f9f9; 
+            background-color: #f3f3f3; 
             overflow: hidden; 
             position: relative; 
-            max-height: 80vh; 
-            margin-bottom: 3rem; 
+            max-height: 85vh; 
+            margin-bottom: 4rem; 
         }
         img.gallery-img { 
             width: 100%; 
@@ -26,26 +26,45 @@
             display: block; 
         }
 
-        /* Hero/Toppsektion med bakgrundsbild */
-        .hero-bg {
-            /* Vi använder en av dina bilder som bakgrund, t.ex. en stämningsfull en */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('_D7A5721 (1).jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Ger en subtil parallax-effekt på dator */
+        /* HERO - Nu med direkt bildreferens */
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6; /* Gör bilden mörkare så texten syns */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero-bg h-[60vh] flex items-center justify-center text-white">
-        <div class="text-center px-4">
-            <h1 class="serif text-5xl md:text-7xl italic tracking-tight">Jimmy Peterson</h1>
-            <p class="tracking-[0.5em] text-[10px] md:text-xs mt-4 uppercase opacity-80">Photography</p>
+    <header class="hero-section">
+        <img src="_D7A5721 (1).jpg" class="hero-image" alt="Jimmy Peterson Photography">
+        <div class="hero-content">
+            <h1 class="serif text-6xl md:text-8xl italic tracking-tight">Jimmy Peterson</h1>
+            <p class="tracking-[0.6em] text-xs md:text-sm mt-6 uppercase opacity-90">Photography</p>
         </div>
     </header>
 
-    <main class="max-w-[1100px] mx-auto px-6 py-20">
+    <main class="max-w-[1200px] mx-auto px-6 py-24">
         <div class="flex flex-col">
             
             <div class="img-wrapper"><a href="_D7A3296-Enhanced-NR (1).jpg" class="glightbox"><img src="_D7A3296-Enhanced-NR (1).jpg" class="gallery-img" loading="lazy"></a></div>
@@ -73,10 +92,10 @@
         </div>
     </main>
 
-    <footer class="py-24 text-center border-t border-gray-100 bg-gray-50">
-        <p class="serif text-3xl italic mb-6">Jimmy Peterson</p>
-        <a href="mailto:jimmy@jimmypeterson.se" class="text-xl border-b border-black hover:opacity-70 transition">jimmy@jimmypeterson.se</a>
-        <p class="mt-4 text-gray-500 tracking-widest text-sm">+46-76-882 94 82</p>
+    <footer class="py-24 text-center border-t border-gray-100 bg-white">
+        <p class="serif text-4xl italic mb-8">Jimmy Peterson</p>
+        <a href="mailto:jimmy@jimmypeterson.se" class="text-2xl border-b border-black hover:opacity-60 transition">jimmy@jimmypeterson.se</a>
+        <p class="mt-6 text-gray-500 tracking-widest text-sm">+46-76-882 94 82</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
