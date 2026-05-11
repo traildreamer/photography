@@ -9,6 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@300;400&display=swap');
         
         * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111; margin: 0; }
         .serif { font-family: 'Playfair Display', serif; }
 
@@ -28,26 +29,15 @@
         .logo-tag { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.8; }
 
         .menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
-        .menu-item { position: relative; cursor: pointer; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
-        
-        /* Dropdown-menyer */
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            color: black;
-            padding: 20px;
-            min-width: 250px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-top: 10px;
-            text-transform: none;
-            letter-spacing: 0;
+        .menu-item a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            transition: opacity 0.3s;
         }
-        .menu-item:hover .dropdown { display: block; }
-        .dropdown a { color: #111; text-decoration: none; display: block; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .dropdown a:hover { opacity: 0.6; }
+        .menu-item a:hover { opacity: 0.6; }
 
         /* HERO */
         .hero {
@@ -63,23 +53,53 @@
         .hero-title { position: relative; z-index: 2; text-align: center; color: white; }
         .hero-title h1 { font-size: clamp(3rem, 8vw, 6rem); margin: 0; font-weight: 400; font-style: italic; }
 
-        /* GRID */
+        /* NATURLIG GRID (Ingen ihoptryckning) */
         .portfolio {
             max-width: 1400px;
             margin: 60px auto;
             padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            /* Kolumner som anpassar sig efter bildens naturliga höjd */
+            column-count: 3;
+            column-gap: 20px;
         }
-        @media (max-width: 1024px) { .portfolio { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .portfolio { grid-template-columns: 1fr; } }
 
-        .img-box { position: relative; overflow: hidden; aspect-ratio: 1/1; background: #f9f9f9; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; display: block; }
-        .img-box:hover img { transform: scale(1.05); }
+        @media (max-width: 1024px) { .portfolio { column-count: 2; } }
+        @media (max-width: 768px) { .portfolio { column-count: 1; } }
 
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #eee; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.5; text-transform: uppercase; }
+        .img-box { 
+            display: inline-block; /* Viktigt för masonry-effekt */
+            width: 100%;
+            margin-bottom: 20px;
+            overflow: hidden; 
+            background: #f9f9f9;
+        }
+        
+        .img-box img { 
+            width: 100%; 
+            height: auto; /* Behåller proportioner */
+            display: block; 
+            transition: transform 0.8s ease; 
+        }
+        .img-box:hover img { transform: scale(1.03); }
+
+        /* KONTAKT & SOCIALA SEKTION */
+        .contact-section { 
+            padding: 100px 20px; 
+            text-align: center; 
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        .contact-info { margin-bottom: 50px; }
+        .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 20px; }
+        .social-links a { 
+            color: #111; 
+            text-decoration: none; 
+            font-size: 1.1rem; 
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        footer { padding: 40px 20px; text-align: center; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.5; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -90,20 +110,8 @@
             <div class="logo-tag">Fine Art Photography</div>
         </div>
         <ul class="menu">
-            <li class="menu-item">
-                Kontakt
-                <div class="dropdown">
-                    <p><strong>Email:</strong><br>jimmy@jimmypeterson.se</p>
-                    <p><strong>Telefon:</strong><br>+46 76-882 94 82</p>
-                </div>
-            </li>
-            <li class="menu-item">
-                Sociala
-                <div class="dropdown">
-                    <a href="https://instagram.com/jimmypetersonphotography" target="_blank">Instagram</a>
-                    <a href="https://tiktok.com/@jimmypetersonphotography" target="_blank">TikTok</a>
-                </div>
-            </li>
+            <li class="menu-item"><a href="#contact">Kontakt</a></li>
+            <li class="menu-item"><a href="#social">Sociala</a></li>
         </ul>
     </nav>
 
@@ -136,6 +144,24 @@
         <div class="img-box"><a href="_D7A7815 (1).jpg" class="glightbox"><img src="_D7A7815 (1).jpg"></a></div>
         <div class="img-box"><a href="_D7A1375 (1).jpg" class="glightbox"><img src="_D7A1375 (1).jpg"></a></div>
     </main>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-info">
+            <h2 class="serif italic" style="font-size: 2.5rem;">Kontakt</h2>
+            <p style="font-size: 1.2rem; margin-top: 20px;">
+                Email: <a href="mailto:jimmy@jimmypeterson.se" style="border:none; font-size:1.2rem;">jimmy@jimmypeterson.se</a><br>
+                Telefon: +46 76-882 94 82
+            </p>
+        </div>
+
+        <div id="social" class="contact-info" style="margin-top: 80px;">
+            <h2 class="serif italic" style="font-size: 2rem;">Sociala Medier</h2>
+            <div class="social-links">
+                <a href="https://instagram.com/jimmypetersonphotography" target="_blank">Instagram</a>
+                <a href="https://tiktok.com/@jimmypetersonphotography" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
         &copy; 2026 Jimmy Peterson Photography
