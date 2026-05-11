@@ -3,88 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jimmy Peterson Fine Art Photography</title>
+    <title>Jimmy Peterson | Fine Art Bird Photography</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
     <style>
-        body { font-family: 'Times New Roman', Times, serif; background-color: #fafafa; color: #111; margin: 0; padding: 0; }
-        a { color: #111; text-decoration: none; }
-        .serif { font-family: 'Times New Roman', Times, serif; }
-
-        header { padding: 40px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .logo { font-size: 24px; font-weight: bold; }
-        .logo-sub { font-size: 14px; color: #555; }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@300;400&display=swap');
         
-        .nav-items { list-style: none; padding: 0; margin: 0; display: flex; font-size: 14px; }
-        .nav-items li { margin-left: 20px; position: relative; }
-        .nav-items li a { padding: 10px 15px; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111; margin: 0; }
+        .serif { font-family: 'Playfair Display', serif; }
 
-        .dropdown { display: none; position: absolute; background-color: white; border: 1px solid #ccc; padding: 15px; width: 250px; left: 0; z-index: 100; }
-        .nav-items li:hover .dropdown { display: block; }
-        
-        .main-hero { width: 100%; height: 70vh; position: relative; margin-top: 20px; overflow: hidden; background-color: #000; }
-        .main-hero img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        
-        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 40px; max-width: 1200px; margin: 0 auto; }
-        .portfolio-item { position: relative; background-color: white; padding: 15px; text-align: center; border: 1px solid #eaeaea; }
-        .portfolio-item img { width: 100%; height: auto; display: block; margin-bottom: 10px; }
-        .portfolio-item span { font-size: 12px; color: #555; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-        @media (max-width: 768px) {
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        /* NAVIGERING */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            color: white;
         }
+        .logo-box { line-height: 1.2; }
+        .logo-name { font-size: 1.5rem; letter-spacing: 2px; font-weight: 400; }
+        .logo-tag { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.8; }
+
+        .menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+        .menu-item { position: relative; cursor: pointer; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+        
+        /* Dropdown-menyer */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            color: black;
+            padding: 20px;
+            min-width: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 10px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .menu-item:hover .dropdown { display: block; }
+        .dropdown a { color: #111; text-decoration: none; display: block; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .dropdown a:hover { opacity: 0.6; }
+
+        /* HERO */
+        .hero {
+            height: 85vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .hero-title { position: relative; z-index: 2; text-align: center; color: white; }
+        .hero-title h1 { font-size: clamp(3rem, 8vw, 6rem); margin: 0; font-weight: 400; font-style: italic; }
+
+        /* GRID */
+        .portfolio {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        @media (max-width: 1024px) { .portfolio { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .portfolio { grid-template-columns: 1fr; } }
+
+        .img-box { position: relative; overflow: hidden; aspect-ratio: 1/1; background: #f9f9f9; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; display: block; }
+        .img-box:hover img { transform: scale(1.05); }
+
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #eee; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.5; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div>
-            <div class="logo">JIMMY PETERSON</div>
-            <div class="logo-sub">FINE ART PHOTOGRAPHY</div>
+    <nav>
+        <div class="logo-box">
+            <div class="logo-name">JIMMY PETERSON</div>
+            <div class="logo-tag">Fine Art Photography</div>
         </div>
-        <ul class="nav-items">
-            <li><a href="#">Hem</a></li>
-            <li><a href="#">Galleri</a></li>
-            <li>
-                <a href="#">Kontakt</a>
+        <ul class="menu">
+            <li class="menu-item">
+                Kontakt
                 <div class="dropdown">
-                    <div><b>Email:</b> jimmy@jimmypeterson.se</div>
-                    <div><b>Telefon:</b> +46 76-882 94 82</div>
+                    <p><strong>Email:</strong><br>jimmy@jimmypeterson.se</p>
+                    <p><strong>Telefon:</strong><br>+46 76-882 94 82</p>
                 </div>
             </li>
-            <li>
-                <a href="#">Sociala</a>
+            <li class="menu-item">
+                Sociala
                 <div class="dropdown">
-                    <div><a href="https://www.instagram.com/jimmypetersonphotography" target="_blank">Instagram (jimmypetersonphotography)</a></div>
-                    <div><a href="https://www.tiktok.com/@jimmypetersonphotography" target="_blank">TikTok (jimmypetersonphotography)</a></div>
+                    <a href="https://instagram.com/jimmypetersonphotography" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@jimmypetersonphotography" target="_blank">TikTok</a>
                 </div>
             </li>
         </ul>
+    </nav>
+
+    <header class="hero">
+        <img src="_D7A5721 (1).jpg" alt="Jimmy Peterson Hero">
+        <div class="hero-title">
+            <h1 class="serif italic">Jimmy Peterson</h1>
+        </div>
     </header>
 
-    <div class="main-hero">
-        <img src="_D7A5721 (1).jpg" alt="_D7A5721 (1).jpg">
-    </div>
+    <main class="portfolio">
+        <div class="img-box"><a href="_D7A1088 (1).jpg" class="glightbox"><img src="_D7A1088 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A2060 (1).jpg" class="glightbox"><img src="_D7A2060 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A2180 (1).jpg" class="glightbox"><img src="_D7A2180 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A2184 (1).jpg" class="glightbox"><img src="_D7A2184 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A2292 (1).jpg" class="glightbox"><img src="_D7A2292 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A3099 (1).jpg" class="glightbox"><img src="_D7A3099 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A3296-Enhanced-NR (1).jpg" class="glightbox"><img src="_D7A3296-Enhanced-NR (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A4534 (1).jpg" class="glightbox"><img src="_D7A4534 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A4815 (1).jpg" class="glightbox"><img src="_D7A4815 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A5405 (1).jpg" class="glightbox"><img src="_D7A5405 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A5448 (1).jpg" class="glightbox"><img src="_D7A5448 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A5601 (1).jpg" class="glightbox"><img src="_D7A5601 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A5721 (1).jpg" class="glightbox"><img src="_D7A5721 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A5736 (1).jpg" class="glightbox"><img src="_D7A5736 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A5951 (1).jpg" class="glightbox"><img src="_D7A5951 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A6184 (1).jpg" class="glightbox"><img src="_D7A6184 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A6746 (1).jpg" class="glightbox"><img src="_D7A6746 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A7229 (1).jpg" class="glightbox"><img src="_D7A7229 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A7815 (1).jpg" class="glightbox"><img src="_D7A7815 (1).jpg"></a></div>
+        <div class="img-box"><a href="_D7A1375 (1).jpg" class="glightbox"><img src="_D7A1375 (1).jpg"></a></div>
+    </main>
 
-    <div class="portfolio-grid">
-        <div class="portfolio-item"><img src="_D7A1088 (1).jpg"><span>_D7A1088 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A2060 (1).jpg"><span>_D7A2060 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A2180 (1).jpg"><span>_D7A2180 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A2184 (1).jpg"><span>_D7A2184 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A2292 (1).jpg"><span>_D7A2292 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A3099 (1).jpg"><span>_D7A3099 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A3296-Enhanced-NR (1).jpg"><span>_D7A3296-Enhanced-NR (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A4534 (1).jpg"><span>_D7A4534 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A4815 (1).jpg"><span>_D7A4815 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A5405 (1).jpg"><span>_D7A5405 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A5448 (1).jpg"><span>_D7A5448 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A5601 (1).jpg"><span>_D7A5601 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A5736 (1).jpg"><span>_D7A5736 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A5951 (1).jpg"><span>_D7A5951 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A6184 (1).jpg"><span>_D7A6184 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A6746 (1).jpg"><span>_D7A6746 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A7229 (1).jpg"><span>_D7A7229 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A7815 (1).jpg"><span>_D7A7815 (1).jpg</span></div>
-        <div class="portfolio-item"><img src="_D7A1375 (1).jpg"><span>_D7A1375 (1).jpg</span></div>
-    </div>
+    <footer>
+        &copy; 2026 Jimmy Peterson Photography
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({ selector: '.glightbox' });
+    </script>
 </body>
 </html>
