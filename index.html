@@ -3,84 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jimmy Peterson Photography | Portfolio</title>
+    <title>Jimmy Peterson Photography</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; -webkit-font-smoothing: antialiased; }
         .serif { font-family: 'Playfair Display', serif; }
-        .gallery-item { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .gallery-item:hover { transform: translateY(-5px); }
+        
+        /* Denna kod ser till att bilderna aldrig blir större än skärmen */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Förbättrad laddning */
+        .img-wrapper {
+            position: relative;
+            background-color: #eee;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+        
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .img-wrapper:hover img {
+            transform: scale(1.03);
+        }
     </style>
 </head>
-<body class="text-[#1a1a1a]">
+<body>
 
-    <header class="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black">
-        <img src="_D7A5721.JPG" class="absolute w-full h-full object-cover opacity-60" alt="Jimmy Peterson">
-        <div class="relative z-10 text-center px-4">
-            <h1 class="serif text-5xl md:text-7xl text-white italic mb-2">Jimmy Peterson</h1>
-            <p class="text-zinc-300 text-xs md:text-sm uppercase tracking-[0.6em] mb-8">Photography</p>
-            <a href="#contact" class="inline-block border border-white/30 text-white px-8 py-3 hover:bg-white hover:text-black transition uppercase text-[10px] tracking-widest">Kontakt</a>
+    <header class="h-[60vh] relative flex items-center justify-center bg-zinc-900 overflow-hidden">
+        <img src="_D7A5721.JPG" class="absolute w-full h-full object-cover opacity-50" alt="Jimmy Peterson">
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="serif text-5xl md:text-6xl italic">Jimmy Peterson</h1>
+            <p class="uppercase tracking-[0.4em] text-[10px] mt-2 opacity-80">Photography</p>
         </div>
     </header>
 
-    <main class="max-w-[1400px] mx-auto px-6 py-20">
+    <main class="max-w-[1200px] mx-auto px-6 py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-[3/4]">
-                <a href="_D7A4815.JPG" class="glightbox"><img src="_D7A4815.JPG" class="w-full h-full object-cover"></a>
-            </div>
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-[3/4]">
-                <a href="_D7A5736.JPG" class="glightbox"><img src="_D7A5736.JPG" class="w-full h-full object-cover"></a>
-            </div>
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-[3/4]">
-                <a href="_D7A9548.JPG" class="glightbox"><img src="_D7A9548.JPG" class="w-full h-full object-cover"></a>
-            </div>
-
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video lg:col-span-2">
-                <a href="_D7A6184.JPG" class="glightbox"><img src="_D7A6184.JPG" class="w-full h-full object-cover"></a>
-            </div>
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
-                <a href="_D7A1088.JPG" class="glightbox"><img src="_D7A1088.JPG" class="w-full h-full object-cover"></a>
-            </div>
-
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video">
-                <a href="_D7A2060.JPG" class="glightbox"><img src="_D7A2060.JPG" class="w-full h-full object-cover"></a>
-            </div>
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video">
-                <a href="_D7A2180.JPG" class="glightbox"><img src="_D7A2180.JPG" class="w-full h-full object-cover"></a>
-            </div>
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video">
-                <a href="_D7A2184.JPG" class="glightbox"><img src="_D7A2184.JPG" class="w-full h-full object-cover"></a>
-            </div>
-
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video lg:col-span-2">
-                <a href="_D7A3296-Enhanced-NR.JPG" class="glightbox"><img src="_D7A3296-Enhanced-NR.JPG" class="w-full h-full object-cover"></a>
-            </div>
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
-                <a href="_D7A5405.JPG" class="glightbox"><img src="_D7A5405.JPG" class="w-full h-full object-cover"></a>
-            </div>
-            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
-                <a href="_D7A5601.JPG" class="glightbox"><img src="_D7A5601.JPG" class="w-full h-full object-cover"></a>
-            </div>
-             <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
-                <a href="_D7A5951.JPG" class="glightbox"><img src="_D7A5951.JPG" class="w-full h-full object-cover"></a>
-            </div>
+            <div class="img-wrapper"><a href="_D7A4815.JPG" class="glightbox"><img src="_D7A4815.JPG" loading="lazy"></a></div>
+            <div class="img-wrapper"><a href="_D7A5736.JPG" class="glightbox"><img src="_D7A5736.JPG" loading="lazy"></a></div>
+            <div class="img-wrapper"><a href="_D7A9548.JPG" class="glightbox"><img src="_D7A9548.JPG" loading="lazy"></a></div>
+            
+            <div class="img-wrapper aspect-video lg:col-span-2"><a href="_D7A6184.JPG" class="glightbox"><img src="_D7A6184.JPG" loading="lazy"></a></div>
+            <div class="img-wrapper"><a href="_D7A1088.JPG" class="glightbox"><img src="_D7A1088.JPG" loading="lazy"></a></div>
+            
+            <div class="img-wrapper aspect-square"><a href="_D7A2060.JPG" class="glightbox"><img src="_D7A2060.JPG" loading="lazy"></a></div>
+            <div class="img-wrapper aspect-square"><a href="_D7A2180.JPG" class="glightbox"><img src="_D7A2180.JPG" loading="lazy"></a></div>
+            <div class="img-wrapper aspect-square"><a href="_D7A2184.JPG" class="glightbox"><img src="_D7A2184.JPG" loading="lazy"></a></div>
+            
+            <div class="img-wrapper aspect-video lg:col-span-2"><a href="_D7A3296-Enhanced-NR.JPG" class="glightbox"><img src="_D7A3296-Enhanced-NR.JPG" loading="lazy"></a></div>
+            <div class="img-wrapper aspect-square"><a href="_D7A5405.JPG" class="glightbox"><img src="_D7A5405.JPG" loading="lazy"></a></div>
+            
+            <div class="img-wrapper aspect-square"><a href="_D7A5601.JPG" class="glightbox"><img src="_D7A5601.JPG" loading="lazy"></a></div>
+            <div class="img-wrapper aspect-square"><a href="_D7A5951.JPG" class="glightbox"><img src="_D7A5951.JPG" loading="lazy"></a></div>
 
         </div>
     </main>
 
-    <section id="contact" class="bg-zinc-900 text-white py-24 px-6 text-center">
-        <h2 class="serif text-4xl mb-6 italic">Kontakt</h2>
-        <div class="space-y-4 mb-8">
-            <a href="mailto:jimmy@jimmypeterson.se" class="block text-2xl hover:text-zinc-400 transition">jimmy@jimmypeterson.se</a>
-            <a href="tel:+46768829482" class="block text-xl text-zinc-400">+46 76-882 94 82</a>
-        </div>
-        <p class="text-[10px] uppercase tracking-widest text-zinc-600">&copy; 2024 Jimmy Peterson Photography</p>
-    </section>
+    <footer id="contact" class="py-20 bg-white text-center border-t border-zinc-100">
+        <h2 class="serif text-3xl italic mb-6">Kontakt</h2>
+        <p class="mb-2"><a href="mailto:jimmy@jimmypeterson.se" class="text-xl hover:underline">jimmy@jimmypeterson.se</a></p>
+        <p class="text-zinc-500 tracking-widest text-sm">+46 76-882 94 82</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    <script>const lightbox = GLightbox({selector: '.glightbox'});</script>
+    <script>
+        const lightbox = GLightbox({ 
+            selector: '.glightbox',
+            openEffect: 'fade',
+            closeEffect: 'fade'
+        });
+    </script>
 </body>
 </html>
