@@ -10,97 +10,101 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital@0;1&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #fdfdfd; color: #1a1a1a; }
         .serif { font-family: 'Playfair Display', serif; }
+        
+        /* OPTIMERING: Förhindrar att sidan hoppar och sparar minne */
         .img-wrapper {
             position: relative;
             overflow: hidden;
             background-color: #f0f0f0;
-            max-height: 70vh;
+            max-height: 80vh;
+            content-visibility: auto; /* Optimerar rendering för långa sidor */
         }
+        
         .img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            /* Förhindrar att tunga bilder segar ner scrollningen */
+            will-change: transform; 
         }
-        .img-wrapper:hover img { transform: scale(1.02); }
-        .gslide-image img { max-height: 90vh !important; width: auto !important; }
+
+        /* Begränsar bildens storlek i fullskärmsläge så webbläsaren inte dör */
+        .gslide-image img {
+            max-height: 95vh !important;
+            width: auto !important;
+            image-rendering: -webkit-optimize-contrast;
+        }
     </style>
 </head>
 <body>
 
-    <header class="py-20 text-center">
-        <h1 class="serif text-5xl md:text-7xl italic tracking-tight">Jimmy Peterson</h1>
+    <header class="py-16 text-center">
+        <h1 class="serif text-5xl md:text-6xl italic tracking-tight">Jimmy Peterson</h1>
         <p class="uppercase tracking-[0.5em] text-[10px] mt-4 opacity-60">Photography</p>
     </header>
 
-    <main class="max-w-[1400px] mx-auto px-6 pb-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <main class="max-w-[1200px] mx-auto px-6 pb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             
             <div class="img-wrapper aspect-[4/5]">
-                <a href="_D7A4815.JPG?v=1" class="glightbox"><img src="_D7A4815.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A4815.JPG?v=2" class="glightbox"><img src="_D7A4815.JPG?v=2" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-square">
-                <a href="_D7A1088.JPG?v=1" class="glightbox"><img src="_D7A1088.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A1088.JPG?v=2" class="glightbox"><img src="_D7A1088.JPG?v=2" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-video md:col-span-2">
-                <a href="_D7A6184.JPG?v=1" class="glightbox"><img src="_D7A6184.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A6184.JPG?v=2" class="glightbox"><img src="_D7A6184.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-square">
-                <a href="_D7A2060.JPG?v=1" class="glightbox"><img src="_D7A2060.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A2060.JPG?v=2" class="glightbox"><img src="_D7A2060.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-square">
-                <a href="_D7A2180.JPG?v=1" class="glightbox"><img src="_D7A2180.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A2180.JPG?v=2" class="glightbox"><img src="_D7A2180.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-video md:col-span-2">
-                <a href="_D7A3296-Enhanced-NR.JPG?v=1" class="glightbox"><img src="_D7A3296-Enhanced-NR.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A3296-Enhanced-NR.JPG?v=2" class="glightbox"><img src="_D7A3296-Enhanced-NR.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-[3/4]">
-                <a href="_D7A5721.JPG?v=1" class="glightbox"><img src="_D7A5721.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A5721.JPG?v=2" class="glightbox"><img src="_D7A5721.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-[3/4]">
-                <a href="_D7A5736.JPG?v=1" class="glightbox"><img src="_D7A5736.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A5736.JPG?v=2" class="glightbox"><img src="_D7A5736.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-square">
-                <a href="_D7A2184.JPG?v=1" class="glightbox"><img src="_D7A2184.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A2184.JPG?v=2" class="glightbox"><img src="_D7A2184.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-square">
-                <a href="_D7A5405.JPG?v=1" class="glightbox"><img src="_D7A5405.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A5405.JPG?v=2" class="glightbox"><img src="_D7A5405.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-square">
-                <a href="_D7A5601.JPG?v=1" class="glightbox"><img src="_D7A5601.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A5601.JPG?v=2" class="glightbox"><img src="_D7A5601.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
             <div class="img-wrapper aspect-square">
-                <a href="_D7A5951.JPG?v=1" class="glightbox"><img src="_D7A5951.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A5951.JPG?v=2" class="glightbox"><img src="_D7A5951.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
             
             <div class="img-wrapper aspect-[3/4] md:col-span-2">
-                <a href="_D7A9548.JPG?v=1" class="glightbox"><img src="_D7A9548.JPG?v=1" alt="Jimmy Peterson"></a>
+                <a href="_D7A9548.JPG?v=2" class="glightbox"><img src="_D7A9548.JPG?v=2" loading="lazy" decoding="async"></a>
             </div>
 
         </div>
     </main>
 
-    <section id="contact" class="bg-white border-t border-zinc-100 py-24 text-center">
-        <h2 class="serif text-4xl italic mb-10">Kontakt & Bokning</h2>
-        <div class="space-y-4">
-            <a href="mailto:jimmy@jimmypeterson.se" class="block text-2xl font-light tracking-tight hover:opacity-60 transition">jimmy@jimmypeterson.se</a>
-            <a href="tel:+46768829482" class="block text-zinc-400 text-lg">+46 76-882 94 82</a>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center text-[10px] uppercase tracking-[0.3em] text-zinc-400">
-        &copy; 2024 Jimmy Peterson Photography
+    <footer id="contact" class="bg-white border-t border-zinc-100 py-24 text-center">
+        <h2 class="serif text-3xl italic mb-6">Jimmy Peterson</h2>
+        <a href="mailto:jimmy@jimmypeterson.se" class="text-xl font-light hover:opacity-60 transition italic">jimmy@jimmypeterson.se</a>
+        <p class="text-zinc-400 text-sm mt-4">+46 76-882 94 82</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
@@ -108,7 +112,8 @@
         const lightbox = GLightbox({ 
             selector: '.glightbox',
             touchNavigation: true,
-            loop: true
+            loop: true,
+            preload: false // Förhindrar att lightboxen laddar alla bilder i förväg
         });
     </script>
 </body>
