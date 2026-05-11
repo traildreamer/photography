@@ -3,156 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jimmy Peterson Photography | Professionell Fotograf</title>
-    <meta name="description" content="Portfolio för fotograf Jimmy Peterson. Konstnärlig fotografi, porträtt och kommersiella uppdrag.">
+    <title>Jimmy Peterson Photography | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
         .serif { font-family: 'Playfair Display', serif; }
-        
-        .gallery-item { transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .gallery-item:hover { transform: translateY(-8px); filter: brightness(1.1); }
-        
-        /* Anpassning för att dölja scrollbars men behålla funktionalitet */
-        html { scroll-behavior: smooth; }
+        .gallery-item { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .gallery-item:hover { transform: translateY(-5px); }
     </style>
 </head>
-<body class="bg-[#fafafa] text-[#1a1a1a]">
+<body class="text-[#1a1a1a]">
 
-    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference text-white">
-        <span class="text-xs uppercase tracking-[0.3em] font-semibold">Jimmy Peterson</span>
-        <a href="#contact" class="text-xs uppercase tracking-[0.3em] border-b border-white/30 hover:border-white transition pb-1">Kontakt</a>
-    </nav>
-
-    <header class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-        <img src="_D7A5721.JPG" class="absolute w-full h-full object-cover opacity-50" alt="Jimmy Peterson Photography Bakgrund">
+    <header class="relative h-[70vh] flex items-center justify-center overflow-hidden bg-black">
+        <img src="_D7A5721.JPG" class="absolute w-full h-full object-cover opacity-60" alt="Jimmy Peterson">
         <div class="relative z-10 text-center px-4">
-            <h1 class="serif text-6xl md:text-8xl text-white italic mb-4">Jimmy Peterson</h1>
-            <p class="text-zinc-300 text-sm md:text-base uppercase tracking-[0.5em] mb-12">Photography</p>
-            <a href="#portfolio" class="inline-block border border-white/20 text-white px-10 py-4 hover:bg-white hover:text-black transition-all duration-500 uppercase text-xs tracking-widest">Se Portfolio</a>
+            <h1 class="serif text-5xl md:text-7xl text-white italic mb-2">Jimmy Peterson</h1>
+            <p class="text-zinc-300 text-xs md:text-sm uppercase tracking-[0.6em] mb-8">Photography</p>
+            <a href="#contact" class="inline-block border border-white/30 text-white px-8 py-3 hover:bg-white hover:text-black transition uppercase text-[10px] tracking-widest">Kontakt</a>
         </div>
     </header>
 
-    <main id="portfolio" class="max-w-[1600px] mx-auto px-4 py-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+    <main class="max-w-[1400px] mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="gallery-item group cursor-pointer lg:col-span-2">
-                <a href="_D7A8446.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-video">
-                        <img src="_D7A8446.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-[3/4]">
+                <a href="_D7A4815.JPG" class="glightbox"><img src="_D7A4815.JPG" class="w-full h-full object-cover"></a>
+            </div>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-[3/4]">
+                <a href="_D7A5736.JPG" class="glightbox"><img src="_D7A5736.JPG" class="w-full h-full object-cover"></a>
+            </div>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-[3/4]">
+                <a href="_D7A9548.JPG" class="glightbox"><img src="_D7A9548.JPG" class="w-full h-full object-cover"></a>
             </div>
 
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A4815.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-[3/4]">
-                        <img src="_D7A4815.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video lg:col-span-2">
+                <a href="_D7A6184.JPG" class="glightbox"><img src="_D7A6184.JPG" class="w-full h-full object-cover"></a>
+            </div>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
+                <a href="_D7A1088.JPG" class="glightbox"><img src="_D7A1088.JPG" class="w-full h-full object-cover"></a>
             </div>
 
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A5448.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-square">
-                        <img src="_D7A5448.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video">
+                <a href="_D7A2060.JPG" class="glightbox"><img src="_D7A2060.JPG" class="w-full h-full object-cover"></a>
+            </div>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video">
+                <a href="_D7A2180.JPG" class="glightbox"><img src="_D7A2180.JPG" class="w-full h-full object-cover"></a>
+            </div>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video">
+                <a href="_D7A2184.JPG" class="glightbox"><img src="_D7A2184.JPG" class="w-full h-full object-cover"></a>
             </div>
 
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A5951.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-video">
-                        <img src="_D7A5951.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-video lg:col-span-2">
+                <a href="_D7A3296-Enhanced-NR.JPG" class="glightbox"><img src="_D7A3296-Enhanced-NR.JPG" class="w-full h-full object-cover"></a>
             </div>
-
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A7815.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-[3/4]">
-                        <img src="_D7A7815.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
+                <a href="_D7A5405.JPG" class="glightbox"><img src="_D7A5405.JPG" class="w-full h-full object-cover"></a>
             </div>
-
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A7464.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-square">
-                        <img src="_D7A7464.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
+            <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
+                <a href="_D7A5601.JPG" class="glightbox"><img src="_D7A5601.JPG" class="w-full h-full object-cover"></a>
             </div>
-
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A5405.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-video">
-                        <img src="_D7A5405.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A9548.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-[3/4]">
-                        <img src="_D7A9548.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery-item group cursor-pointer lg:col-span-3">
-                <a href="_D7A6184.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-[21/9]">
-                        <img src="_D7A6184.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery-item group cursor-pointer">
-                <a href="_D7A4051.JPG" class="glightbox">
-                    <div class="overflow-hidden bg-zinc-200 aspect-square">
-                        <img src="_D7A4051.JPG" alt="Jimmy Peterson Foto" class="w-full h-full object-cover">
-                    </div>
-                </a>
+             <div class="gallery-item overflow-hidden bg-zinc-200 aspect-square">
+                <a href="_D7A5951.JPG" class="glightbox"><img src="_D7A5951.JPG" class="w-full h-full object-cover"></a>
             </div>
 
         </div>
     </main>
 
-    <section id="contact" class="bg-white border-t border-zinc-100 py-32 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="serif text-5xl mb-8 italic">Låt oss boka något</h2>
-            <p class="text-zinc-500 mb-12 text-lg">Tillgänglig för uppdrag och bildförsäljning över hela landet.</p>
-            
-            <div class="space-y-4">
-                <a href="mailto:jimmy@jimmypeterson.se" class="block text-2xl md:text-4xl font-light hover:text-zinc-500 transition">jimmy@jimmypeterson.se</a>
-                <a href="tel:+46768829482" class="block text-xl md:text-2xl text-zinc-400 hover:text-black transition">+46 76-882 94 82</a>
-            </div>
-
-            <div class="mt-20 pt-10 border-t border-zinc-100 flex justify-center gap-8">
-                <a href="#" class="text-xs uppercase tracking-widest font-bold hover:opacity-50 transition">Instagram</a>
-                <a href="#" class="text-xs uppercase tracking-widest font-bold hover:opacity-50 transition">Facebook</a>
-            </div>
+    <section id="contact" class="bg-zinc-900 text-white py-24 px-6 text-center">
+        <h2 class="serif text-4xl mb-6 italic">Kontakt</h2>
+        <div class="space-y-4 mb-8">
+            <a href="mailto:jimmy@jimmypeterson.se" class="block text-2xl hover:text-zinc-400 transition">jimmy@jimmypeterson.se</a>
+            <a href="tel:+46768829482" class="block text-xl text-zinc-400">+46 76-882 94 82</a>
         </div>
+        <p class="text-[10px] uppercase tracking-widest text-zinc-600">&copy; 2024 Jimmy Peterson Photography</p>
     </section>
 
-    <footer class="py-12 bg-zinc-50 text-center">
-        <p class="text-[10px] uppercase tracking-[0.4em] text-zinc-400">
-            &copy; 2024 Jimmy Peterson Photography. All Rights Reserved.
-        </p>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    <script>
-        const lightbox = GLightbox({
-            selector: '.glightbox',
-            touchNavigation: true,
-            loop: true,
-            zoomable: true
-        });
-    </script>
+    <script>const lightbox = GLightbox({selector: '.glightbox'});</script>
 </body>
 </html>
