@@ -6,11 +6,11 @@
     <title>Jimmy Peterson | Fine Art Bird Photography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@200;400&display=swap');
         
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111; margin: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; margin: 0; }
         .serif { font-family: 'Playfair Display', serif; }
 
         /* NAVIGERING */
@@ -18,30 +18,31 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 50px;
+            padding: 40px 60px;
             position: absolute;
             width: 100%;
             z-index: 100;
             color: white;
         }
-        .logo-box { line-height: 1.2; }
-        .logo-name { font-size: 1.5rem; letter-spacing: 2px; font-weight: 400; }
-        .logo-tag { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.8; }
+        .logo-box { line-height: 1.1; }
+        .logo-name { font-size: 1.6rem; letter-spacing: 3px; font-weight: 200; text-transform: uppercase; }
+        .logo-tag { font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.7; margin-top: 5px; }
 
-        .menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+        .menu { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; }
         .menu-item a { 
             color: white; 
             text-decoration: none; 
-            font-size: 0.8rem; 
+            font-size: 0.75rem; 
             text-transform: uppercase; 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             transition: opacity 0.3s;
+            font-weight: 400;
         }
-        .menu-item a:hover { opacity: 0.6; }
+        .menu-item a:hover { opacity: 0.5; }
 
         /* HERO */
         .hero {
-            height: 85vh;
+            height: 90vh;
             background: #000;
             display: flex;
             align-items: center;
@@ -49,117 +50,135 @@
             position: relative;
             overflow: hidden;
         }
-        .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .hero-title { position: relative; z-index: 2; text-align: center; color: white; }
-        .hero-title h1 { font-size: clamp(3rem, 8vw, 6rem); margin: 0; font-weight: 400; font-style: italic; }
+        .hero-title h1 { font-size: clamp(3.5rem, 10vw, 7.5rem); margin: 0; font-weight: 400; font-style: italic; letter-spacing: -2px; }
 
-        /* NATURLIG GRID (Ingen ihoptryckning) */
-        .portfolio {
-            max-width: 1400px;
-            margin: 60px auto;
-            padding: 0 20px;
-            /* Kolumner som anpassar sig efter bildens naturliga höjd */
-            column-count: 3;
-            column-gap: 20px;
+        /* GALLERI (MASONRY - Ingen ihoptryckning) */
+        .portfolio-section {
+            max-width: 1600px;
+            margin: 100px auto;
+            padding: 0 40px;
         }
-
-        @media (max-width: 1024px) { .portfolio { column-count: 2; } }
-        @media (max-width: 768px) { .portfolio { column-count: 1; } }
+        .portfolio-masonry {
+            column-count: 3;
+            column-gap: 30px;
+        }
+        @media (max-width: 1100px) { .portfolio-masonry { column-count: 2; } }
+        @media (max-width: 700px) { .portfolio-masonry { column-count: 1; } .nav { padding: 30px; } }
 
         .img-box { 
-            display: inline-block; /* Viktigt för masonry-effekt */
+            display: inline-block;
             width: 100%;
-            margin-bottom: 20px;
-            overflow: hidden; 
-            background: #f9f9f9;
+            margin-bottom: 30px;
+            overflow: hidden;
+            background: #fdfdfd;
         }
-        
         .img-box img { 
             width: 100%; 
-            height: auto; /* Behåller proportioner */
+            height: auto; 
             display: block; 
-            transition: transform 0.8s ease; 
+            transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .img-box:hover img { transform: scale(1.03); }
+        .img-box:hover img { transform: scale(1.04); }
 
-        /* KONTAKT & SOCIALA SEKTION */
-        .contact-section { 
-            padding: 100px 20px; 
+        /* INFO SEKTIONER */
+        .info-section {
+            padding: 120px 20px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+        .info-section h2 { font-size: 3rem; font-weight: 400; margin-bottom: 40px; }
+        .contact-details { font-size: 1.4rem; font-weight: 200; line-height: 2; }
+        .contact-details a { color: inherit; text-decoration: none; border-bottom: 1px solid #ddd; }
+        
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        .social-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #eee;
+            transition: all 0.4s;
+        }
+        .social-link:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+        footer { 
+            padding: 60px 20px; 
             text-align: center; 
-            background-color: #f9f9f9;
-            border-top: 1px solid #eee;
+            font-size: 0.65rem; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            color: #aaa;
         }
-        .contact-info { margin-bottom: 50px; }
-        .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 20px; }
-        .social-links a { 
-            color: #111; 
-            text-decoration: none; 
-            font-size: 1.1rem; 
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-        }
-
-        footer { padding: 40px 20px; text-align: center; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.5; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo-box">
-            <div class="logo-name">JIMMY PETERSON</div>
-            <div class="logo-tag">Fine Art Photography</div>
+            <div class="logo-name">Jimmy Peterson</div>
+            <div class="logo-tag">Fine Art Bird Photography</div>
         </div>
         <ul class="menu">
-            <li class="menu-item"><a href="#contact">Kontakt</a></li>
-            <li class="menu-item"><a href="#social">Sociala</a></li>
+            <li class="menu-item"><a href="#">Galleri</a></li>
+            <li class="menu-item"><a href="#kontakt">Kontakt</a></li>
+            <li class="menu-item"><a href="#socialt">Socialt</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-        <img src="_D7A5721 (1).jpg" alt="Jimmy Peterson Hero">
+        <img src="_D7A5721 (1).jpg" alt="Jimmy Peterson">
         <div class="hero-title">
-            <h1 class="serif italic">Jimmy Peterson</h1>
+            <h1 class="serif">Jimmy Peterson</h1>
         </div>
     </header>
 
-    <main class="portfolio">
-        <div class="img-box"><a href="_D7A1088 (1).jpg" class="glightbox"><img src="_D7A1088 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A2060 (1).jpg" class="glightbox"><img src="_D7A2060 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A2180 (1).jpg" class="glightbox"><img src="_D7A2180 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A2184 (1).jpg" class="glightbox"><img src="_D7A2184 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A2292 (1).jpg" class="glightbox"><img src="_D7A2292 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A3099 (1).jpg" class="glightbox"><img src="_D7A3099 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A3296-Enhanced-NR (1).jpg" class="glightbox"><img src="_D7A3296-Enhanced-NR (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A4534 (1).jpg" class="glightbox"><img src="_D7A4534 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A4815 (1).jpg" class="glightbox"><img src="_D7A4815 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A5405 (1).jpg" class="glightbox"><img src="_D7A5405 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A5448 (1).jpg" class="glightbox"><img src="_D7A5448 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A5601 (1).jpg" class="glightbox"><img src="_D7A5601 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A5721 (1).jpg" class="glightbox"><img src="_D7A5721 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A5736 (1).jpg" class="glightbox"><img src="_D7A5736 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A5951 (1).jpg" class="glightbox"><img src="_D7A5951 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A6184 (1).jpg" class="glightbox"><img src="_D7A6184 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A6746 (1).jpg" class="glightbox"><img src="_D7A6746 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A7229 (1).jpg" class="glightbox"><img src="_D7A7229 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A7815 (1).jpg" class="glightbox"><img src="_D7A7815 (1).jpg"></a></div>
-        <div class="img-box"><a href="_D7A1375 (1).jpg" class="glightbox"><img src="_D7A1375 (1).jpg"></a></div>
+    <main class="portfolio-section">
+        <div class="portfolio-masonry">
+            <div class="img-box"><a href="_D7A1088 (1).jpg" class="glightbox"><img src="_D7A1088 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A2060 (1).jpg" class="glightbox"><img src="_D7A2060 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A2180 (1).jpg" class="glightbox"><img src="_D7A2180 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A2184 (1).jpg" class="glightbox"><img src="_D7A2184 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A2292 (1).jpg" class="glightbox"><img src="_D7A2292 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A3099 (1).jpg" class="glightbox"><img src="_D7A3099 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A3296-Enhanced-NR (1).jpg" class="glightbox"><img src="_D7A3296-Enhanced-NR (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A4534 (1).jpg" class="glightbox"><img src="_D7A4534 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A4815 (1).jpg" class="glightbox"><img src="_D7A4815 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A5405 (1).jpg" class="glightbox"><img src="_D7A5405 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A5448 (1).jpg" class="glightbox"><img src="_D7A5448 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A5601 (1).jpg" class="glightbox"><img src="_D7A5601 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A5721 (1).jpg" class="glightbox"><img src="_D7A5721 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A5736 (1).jpg" class="glightbox"><img src="_D7A5736 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A5951 (1).jpg" class="glightbox"><img src="_D7A5951 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A6184 (1).jpg" class="glightbox"><img src="_D7A6184 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A6746 (1).jpg" class="glightbox"><img src="_D7A6746 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A7229 (1).jpg" class="glightbox"><img src="_D7A7229 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A7815 (1).jpg" class="glightbox"><img src="_D7A7815 (1).jpg"></a></div>
+            <div class="img-box"><a href="_D7A1375 (1).jpg" class="glightbox"><img src="_D7A1375 (1).jpg"></a></div>
+        </div>
     </main>
 
-    <section id="contact" class="contact-section">
-        <div class="contact-info">
-            <h2 class="serif italic" style="font-size: 2.5rem;">Kontakt</h2>
-            <p style="font-size: 1.2rem; margin-top: 20px;">
-                Email: <a href="mailto:jimmy@jimmypeterson.se" style="border:none; font-size:1.2rem;">jimmy@jimmypeterson.se</a><br>
-                Telefon: +46 76-882 94 82
-            </p>
+    <section id="kontakt" class="info-section">
+        <h2 class="serif italic">Kontakt</h2>
+        <div class="contact-details">
+            <a href="mailto:jimmy@jimmypeterson.se">jimmy@jimmypeterson.se</a><br>
+            <span>+46 76-882 94 82</span>
         </div>
+    </section>
 
-        <div id="social" class="contact-info" style="margin-top: 80px;">
-            <h2 class="serif italic" style="font-size: 2rem;">Sociala Medier</h2>
-            <div class="social-links">
-                <a href="https://instagram.com/jimmypetersonphotography" target="_blank">Instagram</a>
-                <a href="https://tiktok.com/@jimmypetersonphotography" target="_blank">TikTok</a>
-            </div>
+    <section id="socialt" class="info-section" style="background-color: #fafafa;">
+        <h2 class="serif italic">Sociala Medier</h2>
+        <div class="social-grid">
+            <a href="https://instagram.com/jimmypetersonphotography" target="_blank" class="social-link">Instagram</a>
+            <a href="https://tiktok.com/@jimmypetersonphotography" target="_blank" class="social-link">TikTok</a>
         </div>
     </section>
 
@@ -169,7 +188,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
-        const lightbox = GLightbox({ selector: '.glightbox' });
+        const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true });
     </script>
 </body>
 </html>
