@@ -13,6 +13,19 @@
         body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; margin: 0; overflow-x: hidden; }
         .serif { font-family: 'Playfair Display', serif; }
 
+        /* BILDSKYDD - Förhindrar markering och drag-and-drop */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
         /* NAVIGERING */
         nav {
             display: flex; justify-content: space-between; align-items: center;
@@ -70,6 +83,12 @@
             .menu-container { flex-direction: column; gap: 20px; }
             .img-box { padding: 15px; border-width: 2px; }
             .cart-sidebar { width: 100%; right: -100%; max-width: 100%; }
+        }
+
+        /* GLIGHTBOX MODIFIKATION (Gör så att den inte fyller hela skärmen) */
+        .gslide-image img {
+            max-width: 85vw !important;
+            max-height: 85vh !important;
         }
 
         /* OM MIG - AUKTORITET & TRUST */
@@ -281,8 +300,8 @@
     <section id="om-mig" class="about-section">
         <div class="about-text">
             <h2 class="serif italic">Om mig</h2>
-            <p>Mitt namn är Jimmy Peterson och min passion är att fånga fåglars skönhet, karaktär och det vilda livets flyktiga ögonblick genom kameralinsen. Med stort tålamod och djup respekt för naturen strävar jag efter att skapa konstverk som berör och väcker en känsla av absolut närvaro.</p>
-            <p>Mina fotografier tas fram med högsta omsorg och säljs som exklusiva konstutskrifter för att säkerställa att varje detalj, från fjäderdräkt till ljusspel, återges perfekt på din vägg.</p>
+            <p>Jag heter Jimmy Peterson och min passion är att fånga fåglars skönhet, karaktär och ögonblick från deras liv som de flesta av oss aldrig får uppleva. Med stort tålamod och djup respekt för naturen strävar jag efter att skapa konstverk som väcker en känsla av närvaro, även fast man inte var på plats i stunden.</p>
+            <p>Mina fotografier tas fram med högsta omsorg och säljs som exklusiva konstutskrifter som du kan beställa via hemsidan.</p>
             
             <h4 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; color: #666; margin-bottom: 15px;">Utmärkelser & Meriter</h4>
             <ul class="awards-list">
@@ -612,8 +631,21 @@
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
-        // GLightbox
-        const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true });
+        // SPÄRRA HÖGERKLICK PÅ BILDER
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // GLightbox (Uppdaterad för att respektera högerklickskydd och inte fylla skärmen)
+        const lightbox = GLightbox({ 
+            selector: '.glightbox', 
+            touchNavigation: true, 
+            loop: true,
+            zoomable: false, // Tar bort zoom-knappen så folk inte ser maxupplösning
+            draggable: false
+        });
 
         // JavaScript för Varukorg & Kassa
         let cart = []; 
@@ -720,7 +752,7 @@
                         <img src="${item.image}" alt="Fine Art Print" class="cart-item-thumbnail">
                         <div class="cart-item-info">
                             <div class="cart-item-title">Limited Edition Print</div>
-                            <div class="cart-item-desc"><strong>Begränsad upplaga: ${item.edition} ex kvar</strong><br>70x50 cm / Hahnemühle 210g</div>
+                            <div class="cart-item-desc"><strong>${item.edition} ex kvar</strong><br>70x50 cm / Hahnemühle 210g</div>
                             <div class="cart-item-bottom">
                                 <div class="cart-item-price">3 500 kr</div>
                                 <button class="remove-item" onclick="removeFromCart(${index})">Ta bort</button>
