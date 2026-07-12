@@ -82,7 +82,7 @@
         
         .cart-footer { border-top: 1px solid #eee; padding-top: 20px; margin-top: 20px; }
         .cart-total { display: flex; justify-content: space-between; font-size: 1.2rem; margin-bottom: 20px; }
-        .cart-terms { font-size: 0.7rem; color: #666; line-height: 1.5; margin-bottom: 20px; text-align: center; }
+        .cart-terms { font-size: 0.75rem; color: #666; line-height: 1.5; margin-bottom: 20px; text-align: center; }
         
         .btn-primary { display: block; width: 100%; text-align: center; background-color: #1a1a1a; color: #ffffff; text-decoration: none; padding: 18px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: background 0.3s; font-family: inherit; }
         .btn-primary:hover { background-color: #333; }
@@ -98,7 +98,7 @@
         .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; color: #666; }
         .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border 0.3s; }
         .form-group input:focus, .form-group select:focus { border-color: #1a1a1a; }
-        .order-summary-box { background: #fafafa; padding: 15px; border: 1px solid #eee; margin-bottom: 20px; font-size: 0.85rem; }
+        .order-summary-box { background: #fafafa; padding: 15px; border: 1px solid #eee; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.5; }
 
         /* INFO SEKTIONER */
         .info-section { padding: 100px 20px; text-align: center; background-color: #ffffff; border-top: 1px solid #f0f0f0; }
@@ -139,7 +139,7 @@
                     <span class="serif italic">Totalt:</span>
                     <span id="cartTotalSum">0 kr</span>
                 </div>
-                <p class="cart-terms">Frakt tillkommer. Betalning i förskott. Ingen ångerrätt då bilderna specialtrycks.</p>
+                <p class="cart-terms">Frakt tillkommer. Beställningen godkänns först efter att fraktkostnad godkänts och betalning mottagits. Ingen ångerrätt då bilderna specialtrycks.</p>
                 <button class="btn-primary" id="btnGoToCheckout" disabled>Gå till kassan</button>
             </div>
         </div>
@@ -201,7 +201,7 @@
                 </div>
 
                 <div class="cart-footer">
-                    <p class="cart-terms">Genom att klicka på knappen nedan genomför du en bindande beställning. Jag återkommer till dig med betalningsuppgifter och fraktkostnad.</p>
+                    <p class="cart-terms" style="text-align: left;">Genom att skicka beställningen gör du en förfrågan. Jag återkommer med exakt fraktkostnad. <strong>Beställningen godkänns först efter att fraktkostnaden godkänts av dig och betalning mottagits.</strong></p>
                     <button type="submit" class="btn-primary">Skicka beställning</button>
                 </div>
             </form>
@@ -386,14 +386,14 @@
     <section id="kopvillkor" class="info-section">
         <h2 class="serif italic">Information & Köpvillkor</h2>
         <div class="order-container">
-            <p>Samtliga fotografier i galleriet erbjuds som exklusiva konstutskrifter. Bilderna framkallas noggrant för att säkerställa högsta kvalitet, färgdjup och beständighet – perfekta att rama in och lyfta valfritt rum.</p>
+            <p>Samtliga fotografier i galleriet erbjuds som exklusiva konstutskrifter. Bilderna framkallas noggrant på <strong>Hahnemühle Fine Art Studio Enhanced (210 gr.)</strong>. Papperet har en slät, matt yta (bright white) som ger fantastisk färgåtergivning och är helt arkivbeständigt – perfekt att rama in och lyfta valfritt rum.</p>
             
             <ul>
                 <li><strong>Format:</strong> 70x50 cm (liggande) eller 50x70 cm (stående).</li>
                 <li><strong>Pris:</strong> 1 500 kr per bild.</li>
-                <li><strong>Frakt:</strong> Leverans sker inom hela Norden. Fraktkostnad tillkommer utifrån PostNords gällande taxa.</li>
-                <li><strong>Betalning:</strong> Sker tryggt i förskott via Swish eller faktura (skickas separat vid mejlsvar).</li>
-                <li><strong>Köpvillkor:</strong> Vänligen observera att ingen ångerrätt gäller, då varje fotografi specialtrycks på beställning.</li>
+                <li><strong>Frakt:</strong> Leverans sker inom hela Norden. Fraktkostnad tillkommer utifrån PostNords gällande taxa. Jag kontaktar dig med exakt summa för godkännande.</li>
+                <li><strong>Betalning & Godkännande:</strong> Beställningen godkänns först efter att fraktkostnad godkänts och betalning mottagits. Sker tryggt i förskott via Swish eller faktura.</li>
+                <li><strong>Ångerrätt:</strong> Vänligen observera att ingen ångerrätt gäller, då varje fotografi specialtrycks på beställning.</li>
             </ul>
         </div>
     </section>
@@ -469,8 +469,8 @@
             let orderTextForEmail = '';
             
             cart.forEach((item, index) => {
-                summaryHTML += `• ${item}<br>`;
-                orderTextForEmail += `${index + 1}. Fil: ${item}\n`;
+                summaryHTML += `• ${item} (70x50 cm / 50x70 cm)<br>`;
+                orderTextForEmail += `${index + 1}. Fil: ${item} (70x50 cm / 50x70 cm)\n`;
             });
             const totalStr = (cart.length * PRICE_PER_ITEM).toLocaleString('sv-SE') + " kr";
             summaryHTML += `<br><strong>Summa:</strong> ${totalStr} (exkl. frakt)`;
@@ -521,8 +521,8 @@
                     itemDiv.className = 'cart-item';
                     itemDiv.innerHTML = `
                         <div class="cart-item-info">
-                            <div class="cart-item-title">Fine Art Print</div>
-                            <div class="cart-item-price">Fil: ${item}</div>
+                            <div class="cart-item-title">Hahnemühle Fine Art Print</div>
+                            <div class="cart-item-price">Fil: ${item} <br>Storlek: 70x50 cm / 50x70 cm</div>
                         </div>
                         <button class="remove-item" onclick="removeFromCart(${index})">Ta bort</button>
                     `;
