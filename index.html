@@ -6,11 +6,11 @@
     <title>Jimmy Peterson | Fine Art Bird Photography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@200;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@200;300;400;500&display=swap');
         
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1a1a1a; margin: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #1a1a1a; margin: 0; overflow-x: hidden; }
         .serif { font-family: 'Playfair Display', serif; }
 
         /* NAVIGERING */
@@ -28,6 +28,7 @@
         .logo-name { font-size: 1.6rem; letter-spacing: 3px; font-weight: 200; text-transform: uppercase; }
         .logo-tag { font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.7; margin-top: 5px; }
 
+        .menu-container { display: flex; align-items: center; gap: 40px; }
         .menu { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; }
         .menu-item a { 
             color: white; 
@@ -39,6 +40,32 @@
             font-weight: 400;
         }
         .menu-item a:hover { opacity: 0.5; }
+
+        /* VARUKORG IKON (MENY) */
+        .cart-icon-wrapper {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: opacity 0.3s;
+        }
+        .cart-icon-wrapper:hover { opacity: 0.7; }
+        .cart-count-badge {
+            background: white;
+            color: black;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
 
         /* HERO */
         .hero {
@@ -54,7 +81,7 @@
         .hero-title { position: relative; z-index: 2; text-align: center; color: white; }
         .hero-title h1 { font-size: clamp(3.5rem, 10vw, 7.5rem); margin: 0; font-weight: 400; font-style: italic; letter-spacing: -2px; }
 
-        /* GALLERI (MASONRY - Ingen ihoptryckning) */
+        /* GALLERI (MASONRY) */
         .portfolio-section {
             max-width: 1600px;
             margin: 100px auto;
@@ -62,76 +89,216 @@
         }
         .portfolio-masonry {
             column-count: 3;
-            column-gap: 30px;
+            column-gap: 40px;
         }
-        @media (max-width: 1100px) { .portfolio-masonry { column-count: 2; } }
-        @media (max-width: 700px) { .portfolio-masonry { column-count: 1; } .nav { padding: 30px; } }
-
-        .img-box { 
+        
+        /* PROFESSIONELL FOTORAM MED KÖPKNAPP */
+        .img-container {
             display: inline-block;
             width: 100%;
-            margin-bottom: 30px;
-            overflow: hidden;
-            background: #fdfdfd;
+            margin-bottom: 40px;
+            break-inside: avoid;
         }
+        .img-box { 
+            background: #ffffff;
+            padding: 25px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: transform 0.5s ease;
+        }
+        .img-box:hover { transform: translateY(-5px); }
         .img-box img { 
             width: 100%; 
             height: auto; 
             display: block; 
-            transition: transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+            border: 1px solid #e0e0e0;
         }
-        .img-box:hover img { transform: scale(1.04); }
+        .img-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding: 0 5px;
+        }
+        .img-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+        }
+        .btn-add-cart {
+            background: none;
+            border: 1px solid #1a1a1a;
+            color: #1a1a1a;
+            padding: 8px 15px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .btn-add-cart:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        @media (max-width: 1100px) { .portfolio-masonry { column-count: 2; } }
+        @media (max-width: 700px) { 
+            .portfolio-masonry { column-count: 1; } 
+            nav { padding: 30px; flex-direction: column; gap: 20px; text-align: center; } 
+            .menu-container { flex-direction: column; gap: 20px; }
+            .img-box { padding: 15px; border-width: 2px; }
+        }
+
+        /* VARUKORG SIDEBAR */
+        .cart-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .cart-overlay.active { opacity: 1; visibility: visible; }
+        
+        .cart-sidebar {
+            position: fixed;
+            top: 0; right: -450px;
+            width: 100%; max-width: 450px;
+            height: 100%;
+            background: #fff;
+            z-index: 999;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+            transition: right 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+        }
+        .cart-sidebar.active { right: 0; }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0; font-weight: 400; font-style: italic; }
+        .close-cart { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #1a1a1a; }
+        
+        .cart-items { flex-grow: 1; overflow-y: auto; }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .cart-item-info { font-size: 0.85rem; line-height: 1.4; }
+        .cart-item-title { font-weight: 500; }
+        .cart-item-price { color: #666; font-size: 0.8rem; }
+        .remove-item {
+            background: none; border: none; color: #999;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; transition: color 0.3s;
+        }
+        .remove-item:hover { color: #ff3333; }
+        
+        .cart-footer {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        .cart-total {
+            display: flex; justify-content: space-between;
+            font-size: 1.2rem; margin-bottom: 20px;
+        }
+        .cart-terms { font-size: 0.7rem; color: #666; line-height: 1.5; margin-bottom: 20px; text-align: center; }
+        
+        .btn-checkout {
+            display: block; width: 100%; text-align: center;
+            background-color: #1a1a1a; color: #ffffff; text-decoration: none;
+            padding: 18px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
+            border: none; cursor: pointer; transition: background 0.3s; font-family: inherit;
+        }
+        .btn-checkout:hover { background-color: #333; }
+        .empty-cart-msg { text-align: center; color: #999; font-size: 0.9rem; margin-top: 50px; }
 
         /* INFO SEKTIONER */
         .info-section {
-            padding: 120px 20px;
+            padding: 100px 20px;
             text-align: center;
+            background-color: #ffffff;
             border-top: 1px solid #f0f0f0;
         }
-        .info-section h2 { font-size: 3rem; font-weight: 400; margin-bottom: 40px; }
+        .info-section.alt-bg { background-color: #fafafa; }
+        .info-section h2 { font-size: 3rem; font-weight: 400; margin-bottom: 30px; margin-top: 0; }
+        
+        /* BESTÄLLNINGS-INFO */
+        .order-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            font-weight: 300;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        .order-container ul {
+            list-style: none; padding: 0; margin: 30px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0;
+        }
+        .order-container li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .order-container li::before { content: "•"; position: absolute; left: 0; color: #1a1a1a; }
+
+        /* KONTAKT & SOCIALT */
         .contact-details { font-size: 1.4rem; font-weight: 200; line-height: 2; }
         .contact-details a { color: inherit; text-decoration: none; border-bottom: 1px solid #ddd; }
-        
-        .social-grid {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 30px;
-        }
-        .social-link {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #1a1a1a;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid #eee;
-            transition: all 0.4s;
-        }
+        .social-grid { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
+        .social-link { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 4px; color: #1a1a1a; text-decoration: none; padding: 10px 20px; border: 1px solid #e0e0e0; transition: all 0.4s; }
         .social-link:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
 
-        footer { 
-            padding: 60px 20px; 
-            text-align: center; 
-            font-size: 0.65rem; 
-            letter-spacing: 4px; 
-            text-transform: uppercase; 
-            color: #aaa;
-        }
+        footer { padding: 60px 20px; text-align: center; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: #aaa; background: #ffffff; }
     </style>
 </head>
 <body>
+
+    <!-- CART OVERLAY & SIDEBAR -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Din varukorg</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart-msg">Varukorgen är tom.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="serif italic">Totalt:</span>
+                <span id="cartTotalSum">0 kr</span>
+            </div>
+            <p class="cart-terms">Frakt tillkommer utifrån Postnords taxa. Betalning sker i förskott (Swish/Faktura). Ingen ångerrätt då bilderna specialtrycks.</p>
+            <button class="btn-checkout" id="btnCheckout">Slutför beställning</button>
+        </div>
+    </div>
 
     <nav>
         <div class="logo-box">
             <div class="logo-name">Jimmy Peterson</div>
             <div class="logo-tag">Fine Art Bird Photography</div>
         </div>
-        <ul class="menu">
-            <li class="menu-item"><a href="#">Galleri</a></li>
-            <li class="menu-item"><a href="#kontakt">Kontakt</a></li>
-            <li class="menu-item"><a href="#socialt">Sociala medier</a></li>
-        </ul>
+        <div class="menu-container">
+            <ul class="menu">
+                <li class="menu-item"><a href="#galleri">Galleri</a></li>
+                <li class="menu-item"><a href="#kopvillkor">Köpvillkor</a></li>
+                <li class="menu-item"><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <div class="cart-icon-wrapper" id="cartIcon">
+                Varukorg <div class="cart-count-badge" id="cartCountBadge">0</div>
+            </div>
+        </div>
     </nav>
 
     <header class="hero">
@@ -141,39 +308,179 @@
         </div>
     </header>
 
-    <main class="portfolio-section">
+    <main id="galleri" class="portfolio-section">
         <div class="portfolio-masonry">
-            <div class="img-box"><a href="_D7A1088 (1).jpg" class="glightbox"><img src="_D7A1088 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A2060 (1).jpg" class="glightbox"><img src="_D7A2060 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A2180 (1).jpg" class="glightbox"><img src="_D7A2180 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A2184 (1).jpg" class="glightbox"><img src="_D7A2184 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A2292 (1).jpg" class="glightbox"><img src="_D7A2292 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A3099 (1).jpg" class="glightbox"><img src="_D7A3099 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A3296-Enhanced-NR (1).jpg" class="glightbox"><img src="_D7A3296-Enhanced-NR (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A4534 (1).jpg" class="glightbox"><img src="_D7A4534 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A5405 (1).jpg" class="glightbox"><img src="_D7A5405 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A5448 (1).jpg" class="glightbox"><img src="_D7A5448 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A5601 (1).jpg" class="glightbox"><img src="_D7A5601 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A5721 (1).jpg" class="glightbox"><img src="_D7A5721 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A5736 (1).jpg" class="glightbox"><img src="_D7A5736 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A5951 (1).jpg" class="glightbox"><img src="_D7A5951 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A6184 (1).jpg" class="glightbox"><img src="_D7A6184 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A6746 (1).jpg" class="glightbox"><img src="_D7A6746 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A7229 (1).jpg" class="glightbox"><img src="_D7A7229 (1).jpg"></a></div>
-            <div class="img-box"><a href="_D7A1375 (1).jpg" class="glightbox"><img src="_D7A1375 (1).jpg"></a></div>
+            <!-- Upprepa detta block för varje bild du har -->
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A1088 (1).jpg" class="glightbox"><img src="_D7A1088 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A1088 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+            
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A2060 (1).jpg" class="glightbox"><img src="_D7A2060 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A2060 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A2180 (1).jpg" class="glightbox"><img src="_D7A2180 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A2180 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A2184 (1).jpg" class="glightbox"><img src="_D7A2184 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A2184 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A2292 (1).jpg" class="glightbox"><img src="_D7A2292 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A2292 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A3099 (1).jpg" class="glightbox"><img src="_D7A3099 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A3099 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A3296-Enhanced-NR (1).jpg" class="glightbox"><img src="_D7A3296-Enhanced-NR (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A3296-Enhanced-NR (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A4534 (1).jpg" class="glightbox"><img src="_D7A4534 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A4534 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A5405 (1).jpg" class="glightbox"><img src="_D7A5405 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A5405 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A5448 (1).jpg" class="glightbox"><img src="_D7A5448 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A5448 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A5601 (1).jpg" class="glightbox"><img src="_D7A5601 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A5601 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A5721 (1).jpg" class="glightbox"><img src="_D7A5721 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A5721 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A5736 (1).jpg" class="glightbox"><img src="_D7A5736 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A5736 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A5951 (1).jpg" class="glightbox"><img src="_D7A5951 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A5951 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A6184 (1).jpg" class="glightbox"><img src="_D7A6184 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A6184 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A6746 (1).jpg" class="glightbox"><img src="_D7A6746 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A6746 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A7229 (1).jpg" class="glightbox"><img src="_D7A7229 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A7229 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <div class="img-box"><a href="_D7A1375 (1).jpg" class="glightbox"><img src="_D7A1375 (1).jpg" alt="Fågelporträtt"></a></div>
+                <div class="img-meta">
+                    <span class="img-title">Fine Art Print</span>
+                    <button class="btn-add-cart" data-image="_D7A1375 (1).jpg">Lägg i korg</button>
+                </div>
+            </div>
+            
         </div>
     </main>
 
-    <section id="kontakt" class="info-section">
-        <h2 class="serif italic">Kontakt</h2>
-        <div class="contact-details">
-            <a href="mailto:jimmy@jimmypeterson.se">jimmy@jimmypeterson.se</a><br>
-            <span>+46 76-882 94 82</span>
+    <section id="kopvillkor" class="info-section">
+        <h2 class="serif italic">Information & Köpvillkor</h2>
+        <div class="order-container">
+            <p>Samtliga fotografier i galleriet erbjuds som exklusiva konstutskrifter. Bilderna framkallas noggrant för att säkerställa högsta kvalitet, färgdjup och beständighet – perfekta att rama in och lyfta valfritt rum.</p>
+            
+            <ul>
+                <li><strong>Format:</strong> 70x50 cm (liggande) eller 50x70 cm (stående).</li>
+                <li><strong>Pris:</strong> 1 500 kr per bild.</li>
+                <li><strong>Frakt:</strong> Leverans sker inom hela Norden. Fraktkostnad tillkommer utifrån PostNords gällande taxa.</li>
+                <li><strong>Betalning:</strong> Sker tryggt i förskott via Swish eller faktura (skickas separat vid mejlsvar).</li>
+                <li><strong>Köpvillkor:</strong> Vänligen observera att ingen ångerrätt gäller, då varje fotografi specialtrycks på beställning.</li>
+            </ul>
+            <p><strong>Gör så här:</strong> Använd knapparna under bilderna för att lägga till önskade motiv i din varukorg. När du är nöjd öppnar du varukorgen längst uppe till höger och slutför din beställning. Ett automatiskt mejl med dina val skapas då till mig.</p>
         </div>
     </section>
 
-    <section id="socialt" class="info-section" style="background-color: #fafafa;">
-        <h2 class="serif italic">Sociala Medier</h2>
+    <section id="kontakt" class="info-section alt-bg">
+        <h2 class="serif italic">Kontakt</h2>
+        <div class="contact-details">
+            <a href="mailto:jimmy@jimmypeterson.se">jimmy@jimmypeterson.se</a><br>
+            <span style="display:inline-block; margin-top:15px;">+46 76-882 94 82</span>
+        </div>
+        
         <div class="social-grid">
             <a href="https://instagram.com/jimmypetersonphotography" target="_blank" class="social-link">Instagram</a>
             <a href="https://tiktok.com/@jimmypetersonphotography" target="_blank" class="social-link">TikTok</a>
@@ -186,7 +493,112 @@
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
-        const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true });
+        // Initiera GLightbox (Förstoring av bilder)
+        const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true });
+
+        // JavaScript för Varukorgen
+        let cart = [];
+        const PRICE_PER_ITEM = 1500;
+        
+        const cartIcon = document.getElementById('cartIcon');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCartBtn = document.getElementById('closeCart');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartCountBadge = document.getElementById('cartCountBadge');
+        const cartTotalSum = document.getElementById('cartTotalSum');
+        const btnCheckout = document.getElementById('btnCheckout');
+
+        // Öppna & Stäng varukorg
+        cartIcon.addEventListener('click', () => {
+            cartOverlay.classList.add('active');
+            cartSidebar.classList.add('active');
+        });
+
+        const closeCart = () => {
+            cartOverlay.classList.remove('active');
+            cartSidebar.classList.remove('active');
+        };
+        closeCartBtn.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+
+        // Lägg till i varukorg
+        document.querySelectorAll('.btn-add-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const imageName = e.target.getAttribute('data-image');
+                cart.push(imageName);
+                updateCartUI();
+                
+                // Visuell feedback på knappen
+                const originalText = e.target.innerText;
+                e.target.innerText = "Tillagd!";
+                e.target.style.background = "#1a1a1a";
+                e.target.style.color = "#fff";
+                setTimeout(() => {
+                    e.target.innerText = originalText;
+                    e.target.style.background = "none";
+                    e.target.style.color = "#1a1a1a";
+                }, 1500);
+            });
+        });
+
+        // Uppdatera gränssnittet
+        function updateCartUI() {
+            cartCountBadge.innerText = cart.length;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Varukorgen är tom.</p>';
+                cartTotalSum.innerText = "0 kr";
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    itemDiv.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">Fine Art Print</div>
+                            <div class="cart-item-price">Fil: ${item} <br> Format: 70x50 / 50x70</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})">Ta bort</button>
+                    `;
+                    cartItemsContainer.appendChild(itemDiv);
+                });
+                cartTotalSum.innerText = (cart.length * PRICE_PER_ITEM).toLocaleString('sv-SE') + " kr";
+            }
+        }
+
+        // Ta bort från varukorg
+        window.removeFromCart = function(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        };
+
+        // Slutför beställning (Generera e-post)
+        btnCheckout.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Din varukorg är tom.");
+                return;
+            }
+
+            const subject = encodeURIComponent("Beställning av Fine Art Print");
+            let body = "Hej Jimmy!\n\nJag vill gärna beställa följande prints (1 500 kr/st):\n\n";
+            
+            cart.forEach((item, index) => {
+                body += `${index + 1}. Filnamn: ${item}\n`;
+            });
+
+            body += `\nTotalt pris: ${(cart.length * PRICE_PER_ITEM)} kr (exkl. frakt)\n`;
+            body += "\nMina leveransuppgifter:\n";
+            body += "För- och efternamn: \n";
+            body += "Leveransadress: \n";
+            body += "Postnummer och Ort: \n";
+            body += "Telefonnummer: \n\n";
+            body += "Önskat betalsätt (Swish eller Faktura): \n\n";
+            body += "Jag är medveten om att frakt tillkommer samt att ingen ångerrätt gäller p.g.a specialbeställning.\n\n";
+            body += "Vänliga hälsningar,";
+
+            window.location.href = `mailto:jimmy@jimmypeterson.se?subject=${subject}&body=${encodeURIComponent(body)}`;
+        });
     </script>
 </body>
 </html>
