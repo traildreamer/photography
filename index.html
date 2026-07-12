@@ -15,14 +15,8 @@
 
         /* NAVIGERING */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 60px;
-            position: absolute;
-            width: 100%;
-            z-index: 100;
-            color: white;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 40px 60px; position: absolute; width: 100%; z-index: 100; color: white;
         }
         .logo-box { line-height: 1.1; }
         .logo-name { font-size: 1.6rem; letter-spacing: 3px; font-weight: 200; text-transform: uppercase; }
@@ -30,118 +24,33 @@
 
         .menu-container { display: flex; align-items: center; gap: 40px; }
         .menu { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; }
-        .menu-item a { 
-            color: white; 
-            text-decoration: none; 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 3px;
-            transition: opacity 0.3s;
-            font-weight: 400;
-        }
+        .menu-item a { color: white; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; transition: opacity 0.3s; font-weight: 400; }
         .menu-item a:hover { opacity: 0.5; }
 
-        /* VARUKORG IKON (MENY) */
-        .cart-icon-wrapper {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: opacity 0.3s;
-        }
+        /* VARUKORG IKON */
+        .cart-icon-wrapper { cursor: pointer; display: flex; align-items: center; gap: 8px; color: white; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; transition: opacity 0.3s; }
         .cart-icon-wrapper:hover { opacity: 0.7; }
-        .cart-count-badge {
-            background: white;
-            color: black;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.65rem;
-            font-weight: 500;
-        }
+        .cart-count-badge { background: white; color: black; border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center; font-size: 0.65rem; font-weight: 500; }
 
         /* HERO */
-        .hero {
-            height: 90vh;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
+        .hero { height: 90vh; background: #000; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .hero-title { position: relative; z-index: 2; text-align: center; color: white; }
         .hero-title h1 { font-size: clamp(3.5rem, 10vw, 7.5rem); margin: 0; font-weight: 400; font-style: italic; letter-spacing: -2px; }
 
         /* GALLERI (MASONRY) */
-        .portfolio-section {
-            max-width: 1600px;
-            margin: 100px auto;
-            padding: 0 40px;
-        }
-        .portfolio-masonry {
-            column-count: 3;
-            column-gap: 40px;
-        }
+        .portfolio-section { max-width: 1600px; margin: 100px auto; padding: 0 40px; }
+        .portfolio-masonry { column-count: 3; column-gap: 40px; }
         
-        /* PROFESSIONELL FOTORAM MED KÖPKNAPP */
-        .img-container {
-            display: inline-block;
-            width: 100%;
-            margin-bottom: 40px;
-            break-inside: avoid;
-        }
-        .img-box { 
-            background: #ffffff;
-            padding: 25px;
-            border: 3px solid #1a1a1a;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            transition: transform 0.5s ease;
-        }
+        .img-container { display: inline-block; width: 100%; margin-bottom: 40px; break-inside: avoid; }
+        .img-box { background: #ffffff; padding: 25px; border: 3px solid #1a1a1a; box-shadow: 0 15px 35px rgba(0,0,0,0.08); transition: transform 0.5s ease; }
         .img-box:hover { transform: translateY(-5px); }
-        .img-box img { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            border: 1px solid #e0e0e0;
-        }
-        .img-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding: 0 5px;
-        }
-        .img-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #666;
-        }
-        .btn-add-cart {
-            background: none;
-            border: 1px solid #1a1a1a;
-            color: #1a1a1a;
-            padding: 8px 15px;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-        .btn-add-cart:hover {
-            background: #1a1a1a;
-            color: #fff;
-        }
+        .img-box img { width: 100%; height: auto; display: block; border: 1px solid #e0e0e0; }
+        
+        .img-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding: 0 5px; }
+        .img-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #666; }
+        .btn-add-cart { background: none; border: 1px solid #1a1a1a; color: #1a1a1a; padding: 8px 15px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.3s; font-family: inherit; }
+        .btn-add-cart:hover { background: #1a1a1a; color: #fff; }
 
         @media (max-width: 1100px) { .portfolio-masonry { column-count: 2; } }
         @media (max-width: 700px) { 
@@ -149,106 +58,54 @@
             nav { padding: 30px; flex-direction: column; gap: 20px; text-align: center; } 
             .menu-container { flex-direction: column; gap: 20px; }
             .img-box { padding: 15px; border-width: 2px; }
+            .cart-sidebar { width: 100%; right: -100%; max-width: 100%; }
         }
 
         /* VARUKORG SIDEBAR */
-        .cart-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-        }
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 998; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
         .cart-overlay.active { opacity: 1; visibility: visible; }
         
-        .cart-sidebar {
-            position: fixed;
-            top: 0; right: -450px;
-            width: 100%; max-width: 450px;
-            height: 100%;
-            background: #fff;
-            z-index: 999;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-            transition: right 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-        }
+        .cart-sidebar { position: fixed; top: 0; right: -450px; width: 100%; max-width: 450px; height: 100%; background: #fff; z-index: 999; box-shadow: -5px 0 30px rgba(0,0,0,0.1); transition: right 0.4s cubic-bezier(0.2, 1, 0.3, 1); display: flex; flex-direction: column; padding: 40px; overflow-y: auto; }
         .cart-sidebar.active { right: 0; }
         
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
         .cart-header h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0; font-weight: 400; font-style: italic; }
-        .close-cart { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #1a1a1a; }
+        .close-cart { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #1a1a1a; padding: 0; }
         
         .cart-items { flex-grow: 1; overflow-y: auto; }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #f5f5f5;
-        }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f5f5f5; }
         .cart-item-info { font-size: 0.85rem; line-height: 1.4; }
         .cart-item-title { font-weight: 500; }
-        .cart-item-price { color: #666; font-size: 0.8rem; }
-        .remove-item {
-            background: none; border: none; color: #999;
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
-            cursor: pointer; transition: color 0.3s;
-        }
+        .cart-item-price { color: #666; font-size: 0.8rem; margin-top: 5px; }
+        .remove-item { background: none; border: none; color: #999; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: color 0.3s; }
         .remove-item:hover { color: #ff3333; }
         
-        .cart-footer {
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-        .cart-total {
-            display: flex; justify-content: space-between;
-            font-size: 1.2rem; margin-bottom: 20px;
-        }
+        .cart-footer { border-top: 1px solid #eee; padding-top: 20px; margin-top: 20px; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 1.2rem; margin-bottom: 20px; }
         .cart-terms { font-size: 0.7rem; color: #666; line-height: 1.5; margin-bottom: 20px; text-align: center; }
         
-        .btn-checkout {
-            display: block; width: 100%; text-align: center;
-            background-color: #1a1a1a; color: #ffffff; text-decoration: none;
-            padding: 18px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
-            border: none; cursor: pointer; transition: background 0.3s; font-family: inherit;
-        }
-        .btn-checkout:hover { background-color: #333; }
+        .btn-primary { display: block; width: 100%; text-align: center; background-color: #1a1a1a; color: #ffffff; text-decoration: none; padding: 18px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; transition: background 0.3s; font-family: inherit; }
+        .btn-primary:hover { background-color: #333; }
+        .btn-primary:disabled { background-color: #ccc; cursor: not-allowed; }
+        .btn-secondary { background: none; border: none; width: 100%; text-align: left; margin-bottom: 15px; font-size: 0.85rem; cursor: pointer; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-secondary:hover { color: #1a1a1a; }
+        
         .empty-cart-msg { text-align: center; color: #999; font-size: 0.9rem; margin-top: 50px; }
 
+        /* KASSA FORMULÄR */
+        #checkoutView { display: none; flex-direction: column; flex-grow: 1; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; color: #666; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border 0.3s; }
+        .form-group input:focus, .form-group select:focus { border-color: #1a1a1a; }
+        .order-summary-box { background: #fafafa; padding: 15px; border: 1px solid #eee; margin-bottom: 20px; font-size: 0.85rem; }
+
         /* INFO SEKTIONER */
-        .info-section {
-            padding: 100px 20px;
-            text-align: center;
-            background-color: #ffffff;
-            border-top: 1px solid #f0f0f0;
-        }
+        .info-section { padding: 100px 20px; text-align: center; background-color: #ffffff; border-top: 1px solid #f0f0f0; }
         .info-section.alt-bg { background-color: #fafafa; }
         .info-section h2 { font-size: 3rem; font-weight: 400; margin-bottom: 30px; margin-top: 0; }
-        
-        /* BESTÄLLNINGS-INFO */
-        .order-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            font-weight: 300;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        .order-container ul {
-            list-style: none; padding: 0; margin: 30px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0;
-        }
+        .order-container { max-width: 800px; margin: 0 auto; text-align: left; font-weight: 300; line-height: 1.8; font-size: 1.1rem; }
+        .order-container ul { list-style: none; padding: 0; margin: 30px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 20px 0; }
         .order-container li { margin-bottom: 10px; padding-left: 20px; position: relative; }
         .order-container li::before { content: "•"; position: absolute; left: 0; color: #1a1a1a; }
 
@@ -267,21 +124,89 @@
     <!-- CART OVERLAY & SIDEBAR -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>Din varukorg</h3>
-            <button class="close-cart" id="closeCart">&times;</button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <p class="empty-cart-msg">Varukorgen är tom.</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span class="serif italic">Totalt:</span>
-                <span id="cartTotalSum">0 kr</span>
+        
+        <!-- VY 1: VARUKORG -->
+        <div id="cartView" style="display: flex; flex-direction: column; flex-grow: 1;">
+            <div class="cart-header">
+                <h3>Din varukorg</h3>
+                <button class="close-cart">&times;</button>
             </div>
-            <p class="cart-terms">Frakt tillkommer utifrån Postnords taxa. Betalning sker i förskott (Swish/Faktura). Ingen ångerrätt då bilderna specialtrycks.</p>
-            <button class="btn-checkout" id="btnCheckout">Slutför beställning</button>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart-msg">Varukorgen är tom.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span class="serif italic">Totalt:</span>
+                    <span id="cartTotalSum">0 kr</span>
+                </div>
+                <p class="cart-terms">Frakt tillkommer. Betalning i förskott. Ingen ångerrätt då bilderna specialtrycks.</p>
+                <button class="btn-primary" id="btnGoToCheckout" disabled>Gå till kassan</button>
+            </div>
         </div>
+
+        <!-- VY 2: KASSA FORMULÄR -->
+        <div id="checkoutView">
+            <div class="cart-header" style="border-bottom: none; padding-bottom: 0;">
+                <h3>Kassa</h3>
+                <button class="close-cart">&times;</button>
+            </div>
+            <button class="btn-secondary" id="btnBackToCart">← Ändra varukorg</button>
+            
+            <div class="order-summary-box" id="orderSummaryBox">
+                <!-- Fylls i via Javascript -->
+            </div>
+
+            <!-- FormSubmit integrering -->
+            <form action="https://formsubmit.co/jimmy@jimmypeterson.se" method="POST" id="orderForm">
+                
+                <!-- Dolda inställningar för Formsubmit -->
+                <input type="hidden" name="_subject" value="Ny print-beställning via hemsidan!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="box">
+                <input type="hidden" name="Beställda_Bilder" id="inputOrderData" value="">
+                <input type="hidden" name="Ordersumma" id="inputOrderTotal" value="">
+
+                <div class="form-group">
+                    <label>För- och efternamn</label>
+                    <input type="text" name="Namn" required>
+                </div>
+                <div class="form-group">
+                    <label>E-postadress</label>
+                    <input type="email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label>Gatuadress</label>
+                    <input type="text" name="Adress" required>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Postnummer</label>
+                        <input type="text" name="Postnummer" required>
+                    </div>
+                    <div class="form-group" style="flex: 2;">
+                        <label>Ort</label>
+                        <input type="text" name="Ort" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Telefonnummer</label>
+                    <input type="tel" name="Telefon" required>
+                </div>
+                <div class="form-group">
+                    <label>Önskat betalsätt</label>
+                    <select name="Betalsätt" required>
+                        <option value="Swish">Swish</option>
+                        <option value="Faktura">Faktura</option>
+                    </select>
+                </div>
+
+                <div class="cart-footer">
+                    <p class="cart-terms">Genom att klicka på knappen nedan genomför du en bindande beställning. Jag återkommer till dig med betalningsuppgifter och fraktkostnad.</p>
+                    <button type="submit" class="btn-primary">Skicka beställning</button>
+                </div>
+            </form>
+        </div>
+
     </div>
 
     <nav>
@@ -470,7 +395,6 @@
                 <li><strong>Betalning:</strong> Sker tryggt i förskott via Swish eller faktura (skickas separat vid mejlsvar).</li>
                 <li><strong>Köpvillkor:</strong> Vänligen observera att ingen ångerrätt gäller, då varje fotografi specialtrycks på beställning.</li>
             </ul>
-            <p><strong>Gör så här:</strong> Använd knapparna under bilderna för att lägga till önskade motiv i din varukorg. När du är nöjd öppnar du varukorgen längst uppe till höger och slutför din beställning. Ett automatiskt mejl med dina val skapas då till mig.</p>
         </div>
     </section>
 
@@ -493,34 +417,73 @@
 
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
-        // Initiera GLightbox (Förstoring av bilder)
+        // GLightbox
         const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true });
 
-        // JavaScript för Varukorgen
+        // JavaScript för Varukorg & Kassa
         let cart = [];
         const PRICE_PER_ITEM = 1500;
         
         const cartIcon = document.getElementById('cartIcon');
         const cartOverlay = document.getElementById('cartOverlay');
         const cartSidebar = document.getElementById('cartSidebar');
-        const closeCartBtn = document.getElementById('closeCart');
+        const closeCartBtns = document.querySelectorAll('.close-cart');
         const cartItemsContainer = document.getElementById('cartItems');
         const cartCountBadge = document.getElementById('cartCountBadge');
         const cartTotalSum = document.getElementById('cartTotalSum');
-        const btnCheckout = document.getElementById('btnCheckout');
+        const btnGoToCheckout = document.getElementById('btnGoToCheckout');
+        
+        const cartView = document.getElementById('cartView');
+        const checkoutView = document.getElementById('checkoutView');
+        const btnBackToCart = document.getElementById('btnBackToCart');
+        
+        const orderSummaryBox = document.getElementById('orderSummaryBox');
+        const inputOrderData = document.getElementById('inputOrderData');
+        const inputOrderTotal = document.getElementById('inputOrderTotal');
 
         // Öppna & Stäng varukorg
         cartIcon.addEventListener('click', () => {
             cartOverlay.classList.add('active');
             cartSidebar.classList.add('active');
+            showCartView(); // Alltid visa varukorgen först när man öppnar
         });
 
         const closeCart = () => {
             cartOverlay.classList.remove('active');
             cartSidebar.classList.remove('active');
         };
-        closeCartBtn.addEventListener('click', closeCart);
+        closeCartBtns.forEach(btn => btn.addEventListener('click', closeCart));
         cartOverlay.addEventListener('click', closeCart);
+
+        // Växla mellan Varukorg och Kassa
+        function showCartView() {
+            cartView.style.display = 'flex';
+            checkoutView.style.display = 'none';
+        }
+        function showCheckoutView() {
+            cartView.style.display = 'none';
+            checkoutView.style.display = 'flex';
+            
+            // Fyll i summeringen för formuläret
+            let summaryHTML = '<strong>Din beställning:</strong><br>';
+            let orderTextForEmail = '';
+            
+            cart.forEach((item, index) => {
+                summaryHTML += `• ${item}<br>`;
+                orderTextForEmail += `${index + 1}. Fil: ${item}\n`;
+            });
+            const totalStr = (cart.length * PRICE_PER_ITEM).toLocaleString('sv-SE') + " kr";
+            summaryHTML += `<br><strong>Summa:</strong> ${totalStr} (exkl. frakt)`;
+            
+            orderSummaryBox.innerHTML = summaryHTML;
+            
+            // Fyll i dolda fält som skickas i mejlet
+            inputOrderData.value = orderTextForEmail;
+            inputOrderTotal.value = totalStr;
+        }
+
+        btnGoToCheckout.addEventListener('click', showCheckoutView);
+        btnBackToCart.addEventListener('click', showCartView);
 
         // Lägg till i varukorg
         document.querySelectorAll('.btn-add-cart').forEach(button => {
@@ -529,7 +492,7 @@
                 cart.push(imageName);
                 updateCartUI();
                 
-                // Visuell feedback på knappen
+                // Feedback
                 const originalText = e.target.innerText;
                 e.target.innerText = "Tillagd!";
                 e.target.style.background = "#1a1a1a";
@@ -542,13 +505,15 @@
             });
         });
 
-        // Uppdatera gränssnittet
+        // Uppdatera UI
         function updateCartUI() {
             cartCountBadge.innerText = cart.length;
             
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Varukorgen är tom.</p>';
                 cartTotalSum.innerText = "0 kr";
+                btnGoToCheckout.disabled = true;
+                showCartView(); // Hoppa tillbaka om man raderar sista i kassan
             } else {
                 cartItemsContainer.innerHTML = '';
                 cart.forEach((item, index) => {
@@ -557,48 +522,21 @@
                     itemDiv.innerHTML = `
                         <div class="cart-item-info">
                             <div class="cart-item-title">Fine Art Print</div>
-                            <div class="cart-item-price">Fil: ${item} <br> Format: 70x50 / 50x70</div>
+                            <div class="cart-item-price">Fil: ${item}</div>
                         </div>
                         <button class="remove-item" onclick="removeFromCart(${index})">Ta bort</button>
                     `;
                     cartItemsContainer.appendChild(itemDiv);
                 });
                 cartTotalSum.innerText = (cart.length * PRICE_PER_ITEM).toLocaleString('sv-SE') + " kr";
+                btnGoToCheckout.disabled = false;
             }
         }
 
-        // Ta bort från varukorg
         window.removeFromCart = function(index) {
             cart.splice(index, 1);
             updateCartUI();
         };
-
-        // Slutför beställning (Generera e-post)
-        btnCheckout.addEventListener('click', () => {
-            if (cart.length === 0) {
-                alert("Din varukorg är tom.");
-                return;
-            }
-
-            const subject = encodeURIComponent("Beställning av Fine Art Print");
-            let body = "Hej Jimmy!\n\nJag vill gärna beställa följande prints (1 500 kr/st):\n\n";
-            
-            cart.forEach((item, index) => {
-                body += `${index + 1}. Filnamn: ${item}\n`;
-            });
-
-            body += `\nTotalt pris: ${(cart.length * PRICE_PER_ITEM)} kr (exkl. frakt)\n`;
-            body += "\nMina leveransuppgifter:\n";
-            body += "För- och efternamn: \n";
-            body += "Leveransadress: \n";
-            body += "Postnummer och Ort: \n";
-            body += "Telefonnummer: \n\n";
-            body += "Önskat betalsätt (Swish eller Faktura): \n\n";
-            body += "Jag är medveten om att frakt tillkommer samt att ingen ångerrätt gäller p.g.a specialbeställning.\n\n";
-            body += "Vänliga hälsningar,";
-
-            window.location.href = `mailto:jimmy@jimmypeterson.se?subject=${subject}&body=${encodeURIComponent(body)}`;
-        });
     </script>
 </body>
 </html>
